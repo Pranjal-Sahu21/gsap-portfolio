@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 100%;
+
+    --radius: 0rem;
+
+    /* Custom design tokens */
+    --font-display: "Syne", sans-serif;
+    --font-body: "Space Grotesk", sans-serif;
+
+    --gradient-text: linear-gradient(
+      135deg,
+      hsl(0 0% 100%) 0%,
+      hsl(0 0% 60%) 100%
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      hsl(0 0% 0%) 0%,
+      hsl(0 0% 5%) 100%
+    );
+    --gradient-card: linear-gradient(
+      145deg,
+      hsl(0 0% 8%) 0%,
+      hsl(0 0% 3%) 100%
+    );
+
+    --shadow-glow: 0 0 60px hsl(0 0% 100% / 0.05);
+    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.8);
+
+    --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-20;
+  }
+
+  .nav-link {
+    @apply relative text-sm uppercase tracking-widest text-muted-foreground 
+           hover:text-foreground transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-px bg-foreground 
+           transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .hero-title {
+    @apply text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold 
+           tracking-tighter leading-none;
+    font-family: var(--font-display);
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    font-family: var(--font-display);
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+    transition-timing-function: var(--transition-smooth);
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .border-gradient {
+    @apply relative;
+  }
+
+  .border-gradient::before {
+    content: "";
+    @apply absolute inset-0 rounded-lg p-px;
+    background: linear-gradient(135deg, hsl(0 0% 30%) 0%, hsl(0 0% 10%) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .skill-tag {
+    @apply px-4 py-2 text-sm font-medium bg-secondary text-secondary-foreground
+           border border-border transition-all duration-300;
+  }
+
+  .skill-tag:hover {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden bg-card border border-border
+           transition-all duration-500;
+    background: var(--gradient-card);
+  }
+
+  .project-card:hover {
+    @apply border-foreground/30;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .project-card-large {
+    @apply relative overflow-hidden bg-card border border-border
+           transition-all duration-700;
+    background: var(--gradient-card);
+    box-shadow: 0 30px 60px -15px hsl(0 0% 0% / 0.7);
+  }
+
+  .project-card-large:hover {
+    @apply border-foreground/20;
+    box-shadow: var(--shadow-glow), 0 30px 60px -15px hsl(0 0% 0% / 0.7);
+  }
+
+  .magnetic-button {
+    @apply relative inline-flex items-center justify-center px-8 py-4
+           text-sm uppercase tracking-widest font-medium
+           bg-primary text-primary-foreground
+           transition-all duration-300 overflow-hidden;
+  }
+
+  .magnetic-button::before {
+    content: "";
+    @apply absolute inset-0 bg-foreground/10 translate-y-full
+           transition-transform duration-500;
+  }
+
+  .magnetic-button:hover::before {
+    @apply translate-y-0;
+  }
+
+  .outline-button {
+    @apply relative inline-flex items-center justify-center px-10 py-4
+           text-sm uppercase tracking-widest font-medium
+           border border-foreground text-foreground
+           transition-all duration-300 overflow-hidden;
+  }
+
+  .outline-button:hover {
+    @apply bg-foreground text-background;
+  }
+
+  .timeline-line {
+    @apply absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border;
+  }
+
+  .timeline-dot {
+    @apply absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-foreground
+           -translate-x-1/2 border-2 border-background;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  .stagger-1 {
+    transition-delay: 0.1s;
+  }
+  .stagger-2 {
+    transition-delay: 0.2s;
+  }
+  .stagger-3 {
+    transition-delay: 0.3s;
+  }
+  .stagger-4 {
+    transition-delay: 0.4s;
+  }
+  .stagger-5 {
+    transition-delay: 0.5s;
+  }
+}
+
+/* Make dots white */
+.slick-dots li button:before {
+  color: white !important;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white !important;
+  opacity: 1;
+}
+
+.slick-dots li button:before {
+  font-size: 4px;
+}
