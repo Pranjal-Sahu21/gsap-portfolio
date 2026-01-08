@@ -3,11 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Slider from "react-slick";
 
-// Import CSS for slider
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Project Assets
 import projectEcommerce from "@/assets/Voltmart-modified.png";
 import projectResume from "@/assets/ResuScope-modified.png";
 import projectTyping from "@/assets/cheetype-modified.png";
@@ -41,7 +39,7 @@ const projects = [
     link: "https://cheetype.netlify.app",
     description:
       "An interactive typing test that tracks speed and accuracy in real-time, with customisable test lengths.",
-    tags: ["React", "CSS",],
+    tags: ["React", "CSS"],
     year: "2025",
     image: projectTyping,
   },
@@ -81,7 +79,6 @@ const ProjectsSection = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
 
-  // Track screen size for responsive behavior
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -89,12 +86,10 @@ const ProjectsSection = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // GSAP animations for desktop cards
   useEffect(() => {
     if (isMobile) return;
 
     const ctx = gsap.context(() => {
-      // Animate title
       gsap.fromTo(
         titleRef.current,
         { y: 50, opacity: 0 },
@@ -110,7 +105,6 @@ const ProjectsSection = () => {
         }
       );
 
-      // Animate cards with stagger
       const cards =
         projectsRef.current?.querySelectorAll<HTMLElement>(".project-card");
 
@@ -124,10 +118,10 @@ const ProjectsSection = () => {
             scale: 1,
             duration: 0.8,
             ease: "power3.out",
-            stagger: 0.15, // GSAP automatically staggers the cards
+            stagger: 0.15,
             scrollTrigger: {
               trigger: projectsRef.current,
-              start: "top 80%", // trigger when the grid starts to appear
+              start: "top 80%",
             },
           }
         );
@@ -137,7 +131,6 @@ const ProjectsSection = () => {
     return () => ctx.revert();
   }, [isMobile]);
 
-  // Mobile slider settings
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -187,7 +180,6 @@ const ProjectsSection = () => {
             ))}
           </Slider>
         ) : (
-          // Desktop Grid with GSAP animations
           <div ref={projectsRef} className="grid md:grid-cols-2 gap-12">
             {projects.map((project) => (
               <a
@@ -215,7 +207,7 @@ const ProjectsSection = () => {
                   <p className="text-muted-foreground text-sm mb-4">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -225,6 +217,24 @@ const ProjectsSection = () => {
                       </span>
                     ))}
                   </div>
+                  {/* View Live Button */}
+                  <span className="inline-flex items-center text-sm font-medium text-primary transition-all duration-300">
+                    View Live
+                    <svg
+                      className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      ></path>
+                    </svg>
+                  </span>
                 </div>
               </a>
             ))}
