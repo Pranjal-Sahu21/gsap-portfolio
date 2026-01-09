@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Import skill images
 import htmlIcon from "@/assets/skills/html-logo-modified.png";
 import cssIcon from "@/assets/skills/css-logo-modified.png";
 import jsIcon from "@/assets/skills/js-logo-modified.png";
@@ -93,7 +92,7 @@ const SkillsSection = () => {
                 className={`relative rounded-lg overflow-hidden transition-all duration-300 group-hover:border-foreground/50 group-hover:scale-110
         ${
           skill.name === "Framer motion"
-            ? "w-12 h-12 md:w-16 md:h-16" // smaller sizes
+            ? "w-12 h-12 md:w-16 md:h-16"
             : "w-16 h-16 md:w-20 md:h-20"
         }
       `}
