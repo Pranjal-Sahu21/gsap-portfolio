@@ -90,12 +90,13 @@ const HeroSection = () => {
             to life through thoughtful design and fluid animations.
           </p>
           <div ref={ctaRef} className="flex flex-wrap gap-4">
-            <button
-              onClick={() => scrollToSection("projects")}
+            <a
+              href="https://drive.google.com/file/d/1zwEZOF3Tdz97v0aHU2WnPNEKKgdBdFIb/view?usp=sharing"
+              target="_blank"
               className="magnetic-button"
             >
-              View Projects
-            </button>
+              Download CV
+            </a>
             <button
               onClick={() => scrollToSection("contact")}
               className="outline-button"

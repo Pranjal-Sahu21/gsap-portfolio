@@ -204,7 +204,7 @@
   }
 
   .outline-button {
-    @apply relative inline-flex items-center justify-center px-10 py-4
+    @apply relative inline-flex items-center justify-center px-[34px] py-4
            text-sm uppercase tracking-widest font-medium
            border border-foreground text-foreground
            transition-all duration-300 overflow-hidden;
