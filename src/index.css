@@ -247,7 +247,6 @@
   }
 }
 
-/* Make dots white */
 .slick-dots li button:before {
   color: white !important;
   opacity: 0.5;

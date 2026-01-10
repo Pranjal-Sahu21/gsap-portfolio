@@ -78,9 +78,6 @@ const HeroSection = () => {
             <div className="overflow-hidden">
               <span className="title-line block text-gradient">Developer</span>
             </div>
-            {/* <div className="overflow-hidden">
-              <span className="title-line block">&amp; Designer</span>
-            </div> */}
           </h1>
           <p
             ref={subtitleRef}
