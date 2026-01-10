@@ -143,6 +143,7 @@ const ContactSection = () => {
               {/* Contact Form */}
               <form
                 ref={formRef}
+                autoComplete="off"
                 onSubmit={handleSubmit}
                 action="https://formspree.io/f/movnrvqz"
                 method="POST"
@@ -161,7 +162,9 @@ const ContactSection = () => {
                     placeholder="Your name"
                   />
                   {errors.name && (
-                    <p className="mt-2 text-sm text-destructive">{errors.name}</p>
+                    <p className="mt-2 text-sm text-destructive">
+                      {errors.name}
+                    </p>
                   )}
                 </div>
 
@@ -246,6 +249,18 @@ const ContactSection = () => {
                     className="text-xl font-bold hover:text-gradient"
                   >
                     sahupranjal1619@gmail.com
+                  </a>
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-medium uppercase tracking-wider mb-4 text-muted-foreground">
+                    Phone
+                  </h3>
+                  <a
+                    href="tel:+918895596189"
+                    className="text-xl font-medium hover:text-gradient"
+                  >
+                    +91 8895596189
                   </a>
                 </div>
 
