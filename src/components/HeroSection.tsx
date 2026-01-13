@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({delay: 0.8});
 
       tl.fromTo(
         titleRef.current?.querySelectorAll(".title-line") || [],
