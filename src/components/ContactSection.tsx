@@ -70,7 +70,7 @@ const ContactSection = () => {
         delay: 0.2,
         scrollTrigger: {
           trigger: ".reveal-info",
-          start: "top 85%",
+          start: "top bottom",
         },
       });
     }, sectionRef);
