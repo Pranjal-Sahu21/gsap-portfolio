@@ -47,10 +47,11 @@ const ContactSection = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".reveal-title",
-          start: "top 85%",
+          start: "top bottom",
+          once: true
         },
       });
-
+      
       gsap.from(".reveal-form", {
         opacity: 0,
         y: 50,
@@ -58,10 +59,11 @@ const ContactSection = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: ".reveal-form",
-          start: "top 85%",
+          start: "top bottom",
+          once: true
         },
       });
-
+      
       gsap.from(".reveal-info", {
         opacity: 0,
         y: 50,
@@ -71,6 +73,7 @@ const ContactSection = () => {
         scrollTrigger: {
           trigger: ".reveal-info",
           start: "top bottom",
+          once: true
         },
       });
     }, sectionRef);

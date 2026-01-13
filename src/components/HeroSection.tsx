@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.8 });
+      const tl = gsap.timeline();
 
       tl.fromTo(
         titleRef.current?.querySelectorAll(".title-line") || [],
@@ -57,11 +57,14 @@ const HeroSection = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => {
+      ScrollTrigger?.refresh();
+    }, 400);
+  }
+};
 
   return (
     <section
